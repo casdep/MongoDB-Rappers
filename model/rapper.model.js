@@ -2,19 +2,32 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const RapperSchema = new Schema({
-    name: String,
-    pictureURL: String,
-    breakthroughTrack: String,
-    dateOfBirth: String
+  name:  {
+    type: String,
+    required: true
+  },
+  pictureURL:   {
+    type: String,
+    required: true
+  },
+  breakthroughTrack:   {
+    type: String,
+    required: true
+  },
+  dateOfBirth:   {
+    type: String,
+    required: false
+  }
 });
 
 const Rapper = mongoose.model('rapper', RapperSchema);
 
+//seed data
 const rapper = new Rapper({
-  name: 'XXXTentacion',
-  pictureURL: 'https://is3-ssl.mzstatic.com/image/thumb/Music122/v4/e7/16/1b/e7161b6e-272d-ce01-f026-28a0bfb80b8d/888915347232_cover.jpg/600x600bf.jpg',
-  dateOfBirth:'23-01-1998',
-  breakthroughTrack: 'Look At Me'
+    name: 'Rae Sremmurd',
+    pictureURL: 'https://i.scdn.co/image/f210fc5536fd12775209cf38dcd3720c5f93722d',
+    breakthroughTrack: 'No Type',
+    dateOfBirth: '1995',
 }); rapper.save();
 console.log(rapper);
 
