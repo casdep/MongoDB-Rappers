@@ -2,7 +2,7 @@ const assert = require('assert');
 var Album  = require('../model/album.model');
 
 describe('Validating records', () => {
-    it('requires a album name', () => {
+    it('requires an album name', () => {
         const album = new Album({
           artist: 'Rae Sremmurd',
           name: undefined,
