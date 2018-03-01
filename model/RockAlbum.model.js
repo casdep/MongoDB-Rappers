@@ -1,18 +1,17 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const AlbumSchema = new Schema({
+const RockAlbumSchema = new Schema({
   name: {
     type: String,
     required: [true, 'Name is required.']
   },
-  artist:  {
+  band:  {
     type: String,
-    required: [true, 'artist is required.']
+    required: [true, 'Artist is required.']
   },
   pictureURL:   {
-    type: String,
-    required: [true, 'pictureURL is required.']
+    type: String
   },
   tracks: {
     type: Number,
@@ -30,29 +29,21 @@ const AlbumSchema = new Schema({
     },
     required: true
   },
-  rapper: {
-    rapperName:{
-      type: String,
-      required: [true, 'rapper is required.']
-    },
-    breakthroughTrack: {
-      type: String,
-      required: [true, 'breakthroughTrack is required.']
-    },
-    dateOfBirth: {
-      type: String,
-      required: [true, 'dateOfBirth is required.']
-    }
-  },
-  recordcompany: {
-    labelName: {
-      type: String,
-      required: [true, 'recordcompany is required.']
-    }
-  }
-});
+  //
+  // rockBand: [{
+  //     type: Schema.Types.ObjectId,
+  //     ref: 'rockBand'
+  // }],
+  rockLabel: [{
+      type: Schema.Types.ObjectId,
+      ref: 'rocklabel'
+  }],
+},
 
-const Album = mongoose.model('album', AlbumSchema);
+    { usePushEach: true }
+);
+
+const RockAlbum = mongoose.model('rockalbum', RockAlbumSchema);
 
 // //seed data
 // const album = new Album({
@@ -72,4 +63,4 @@ const Album = mongoose.model('album', AlbumSchema);
 // }); album.save();
 // console.log(album);
 
-module.exports = Album;
+module.exports = RockAlbum;
